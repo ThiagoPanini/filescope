@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://pypi.org/project/filescope/"><img src="https://i.imgur.com/OPQHHs0.jpg" alt="filescope logo" width=600, height=350></a>
+  <a href="https://pypi.org/project/filescope/"><img src="https://i.imgur.com/qgT6wPW.png" alt="filescope logo"></a>
 </h1>
 
 <div align="center">
