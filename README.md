@@ -142,7 +142,7 @@ examples/output
 └── visao_geral_usuarios.png
 ```
 
-A função `generate_visual_report()` é extremamente valiosa para a coleta de insights visuais sobre o conteúdo do diretório analisado. Como exemplo, a imagem abaixo ilustra o conteúdo presente, por padrão, em `visao_geral_arquivos.png`:
+A função `generate_visual_report()` é extremamente valiosa para a coleta de insights visuais sobre o conteúdo do diretório analisado. Como exemplo, a imagem abaixo ilustra o conteúdo presente, por padrão, em `visao_geral_diretorio.png`:
 
 <div allign="center">
   <img src="https://i.imgur.com/dHy8Exx.png">
