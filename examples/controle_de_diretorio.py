@@ -32,7 +32,7 @@ from dotenv import load_dotenv, find_dotenv
 import os
 
 # Filescope
-from manager import controle_de_diretorio
+from manager import controle_de_diretorio, generate_visual_report
 
 
 """
@@ -49,6 +49,7 @@ load_dotenv(find_dotenv())
 SRC_PATH = os.getenv('SRC_PATH')
 DST_PATH = os.getenv('DST_PATH')
 ROOT_FILE = os.path.join(DST_PATH, 'root_control.csv')
+OUTPUT_PATH = os.path.join(DST_PATH)
 
 
 """
@@ -59,3 +60,6 @@ ROOT_FILE = os.path.join(DST_PATH, 'root_control.csv')
 
 # Controle de diretório
 df_root = controle_de_diretorio(root=SRC_PATH, output_filepath=ROOT_FILE)
+
+# Analisando visualmente o report
+generate_visual_report(df=df_root, output_path=OUTPUT_PATH)
