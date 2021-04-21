@@ -37,7 +37,7 @@ reqs = [str(ir.req) for ir in install_reqs]"""
 # Criando setup
 setup(
     name='filescope',
-    version='0.0.3',
+    version='0.0.5',
     author='Thiago Panini',
     author_email='thipanini94@gmail.com',
     packages=find_packages(),
@@ -50,8 +50,8 @@ setup(
     description='Gerenciamento de arquivos em diretórios locais a partir de funcionalidades encapsuladas',
     long_description=__long_description__,
     long_description_content_type="text/markdown",
-    url='https://github.com/ThiagoPanini/pylearn',
-    keywords='Packages, Components, Machine Learning, Auto ML, Viz',
+    url='https://github.com/ThiagoPanini/filescope',
+    keywords='Files, directories, os, managing files',
     include_package_data=True,
     zip_safe=False,
     classifiers=[
