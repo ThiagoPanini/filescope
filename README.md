@@ -17,11 +17,6 @@
 </div>
 <br/>
 
-<div align="center">
-  Work in progress!
-</div>
-<br/>
-
 Biblioteca Python criada para facilitar o gerenciamento e a análise de arquivos armazenados em diretórios locais do sistema operacional. Com o pacote `filescope`, é possível validar a presença de arquivos em diretórios específicos, realizar cópias entre arquivos de diferentes diretórios ou até mesmo gerar um report analítico e visual completo contendo informações relevantes a respeito dos arquivos presentes em um diretório específico, como tamanho, dias desde a criação, dias sem utilização, modificação ou acesso e um score específico (denominado *filescope_score*) que penaliza arquivos de alto tamanho e que estão há muito tempo sem acesso.
 
 ## Table of content
