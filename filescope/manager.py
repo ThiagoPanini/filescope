@@ -51,7 +51,7 @@ filterwarnings('ignore')
 """
 ---------------------------------------------------
 ------------ 1. CONFIGURAÇÃO INICIAL --------------
-           1.2 Definindo objetos de log
+  1.2 Definindo de log e salvamento de arquivos
 ---------------------------------------------------
 """
 
@@ -106,6 +106,43 @@ def log_config(logger, level=logging.DEBUG,
 # Configurando objeto de log
 logger = logging.getLogger(__file__)
 logger = log_config(logger)
+
+
+def save_data(data, output_path, filename):
+    """
+    Método responsável por salvar objetos DataFrame em formato csv.
+
+    Parâmetros
+    ----------
+    :param data: arquivo/objeto a ser salvo [type: pd.DataFrame]
+    :param output_path: referência de diretório destino [type: string]
+    :param filename: referência do nome do arquivo a ser salvo [type: string]
+
+    Retorno
+    -------
+    Este método não retorna nenhum parâmetro além do arquivo devidamente salvo no diretório
+
+    Aplicação
+    ---------
+    df = file_generator_method()
+    save_result(df, output_path=OUTPUT_PATH, filename='arquivo.csv')
+    """
+
+    # Verificando se diretório existe
+    if not os.path.isdir(output_path):
+        logger.warning(f'Diretório {output_path} inexistente. Criando diretório no local especificado')
+        try:
+            os.makedirs(output_path)
+        except Exception as e:
+            logger.error(f'Erro ao tentar criar o diretório {output_path}. Exception lançada: {e}')
+            return
+
+    logger.debug(f'Salvando arquivo no diretório especificado')
+    try:
+        output_file = os.path.join(output_path, filename)
+        data.to_csv(output_file, index=False)
+    except Exception as e:
+        logger.error(f'Erro ao salvar arquivo {filename}. Exception lançada: {e}')
 
 
 """
@@ -360,8 +397,7 @@ def calc_filescope_score(df, peso_tkb=2, peso_ddc=1, peso_dda=2, peso_ddm=1):
     return df.merge(df_score, how='left', on=key_cols)
 
 # Gerando report de controle de diretório   
-def controle_de_diretorio(root, output_filepath=os.path.join(os.getcwd(), 'controle_root.csv'),
-                          sort_col='filescope_score', ascending=False):
+def controle_de_diretorio(root, sort_col='filescope_score', ascending=False, **kwargs):
     """
     Função responsável por retornar parâmetros de controle de um determinado diretório:
         - Caminho raíz;
@@ -442,16 +478,24 @@ def controle_de_diretorio(root, output_filepath=os.path.join(os.getcwd(), 'contr
     root_manager = root_manager.loc[:, order_cols]
     root_manager = root_manager.sort_values(by=sort_col, ascending=ascending)
 
-    # Salvando arquivo gerado
-    logger.debug('Salvando arquivo de controle gerado')
-    try:
-        output_dir = os.path.split(output_filepath)[0]
-        if not isdir(output_dir):
-            os.makedirs(output_dir)
-        root_manager.to_csv(output_filepath, index=False)
-        logger.info(f'Arquivo de controle para o diretório {root} salvo com sucesso')
-    except Exception as e:
-        logger.error(f'Erro ao salvar arquivo de controle. Exception lançada: {e}')
+    # Validando salvamento dos resultados
+    if 'save' in kwargs and bool(kwargs['save']):
+        output_path = kwargs['output_path'] if 'output_path' in kwargs else os.path.join(os.getcwd(), 'output')
+        output_filename = kwargs['output_filename'] if 'output_filename' in kwargs else 'controle_diretorio.csv'
+        save_data(root_manager, output_path=output_path, filename=output_filename)
+
+    """# Salvando arquivo gerado
+    if 'save' in kwargs and bool(kwargs['save']):
+        logger.debug('Salvando arquivo de controle gerado')
+        output_filepath=os.path.join(os.getcwd(), 'controle_root.csv')
+        try:
+            output_dir = os.path.split(output_filepath)[0]
+            if not isdir(output_dir):
+                os.makedirs(output_dir)
+            root_manager.to_csv(output_filepath, index=False)
+            logger.info(f'Arquivo de controle para o diretório {root} salvo com sucesso')
+        except Exception as e:
+            logger.error(f'Erro ao salvar arquivo de controle. Exception lançada: {e}')"""
 
     return root_manager
 
