@@ -48,8 +48,6 @@ load_dotenv(find_dotenv())
 # Definindo variáveis de diretório
 SRC_PATH = os.getenv('SRC_PATH')
 DST_PATH = os.getenv('DST_PATH')
-ROOT_FILE = os.path.join(DST_PATH, 'root_control.csv')
-OUTPUT_PATH = os.path.join(DST_PATH)
 
 
 """
@@ -59,7 +57,7 @@ OUTPUT_PATH = os.path.join(DST_PATH)
 """
 
 # Controle de diretório
-df_root = controle_de_diretorio(root=SRC_PATH, output_filepath=ROOT_FILE)
+df_root = controle_de_diretorio(root=SRC_PATH, save=False, output_path=DST_PATH)
 
 # Analisando visualmente o report
-generate_visual_report(df=df_root, output_path=OUTPUT_PATH)
+generate_visual_report(df=df_root, output_path=DST_PATH)
