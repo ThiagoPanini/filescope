@@ -32,7 +32,7 @@ from dotenv import load_dotenv, find_dotenv
 import os
 
 # Filescope
-from manager import valida_dt_mod_arquivo, copia_arquivo
+from filescope.manager import valida_dt_mod_arquivo, copia_arquivo
 
 
 """

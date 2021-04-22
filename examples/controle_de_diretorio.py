@@ -32,7 +32,7 @@ from dotenv import load_dotenv, find_dotenv
 import os
 
 # Filescope
-from manager import controle_de_diretorio, generate_visual_report
+from filescope.manager import controle_de_diretorio, generate_visual_report
 
 
 """
