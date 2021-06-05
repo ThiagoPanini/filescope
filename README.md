@@ -26,8 +26,6 @@
 
 <br/>
 
-Biblioteca Python criada para facilitar o gerenciamento e a análise de arquivos armazenados em diretórios locais do sistema operacional. Com o pacote `filescope`, é possível validar a presença de arquivos em diretórios específicos, realizar cópias entre arquivos de diferentes diretórios ou até mesmo gerar um report analítico e visual completo contendo informações relevantes a respeito dos arquivos presentes em um diretório específico, como tamanho, dias desde a criação, dias sem utilização, modificação ou acesso e um score específico (denominado *filescope_score*) que penaliza arquivos de alto tamanho e que estão há muito tempo sem acesso.
-
 
 ## Table of content
 
@@ -69,7 +67,9 @@ ___
 
 After a general overview of the package, it's time to go a little deeper on its functionalities. So, this section will allocate some of the main package features divided into two groups: file handling and directory management.
 
-### Manuseio de Arquivos
+### File Handling
+
+One of the greatest features of filescope is to provide users the hability to use built in functions to 
 
 Uma das grandes vantagens do pacote filescope é a de proporcionar aos usuários blocos de código previamente gerenciados para algumas operações envolvendo arquivos, como a validação e a cópia. A função `valida_arquivo_origem()`, por exemplo, é capaz de retornar uma resposta booleana relacionada a presença de um determinado arquivo em um determinado diretório. Já a função `valida_dt_mod_arquivo()`, por sua vez, além de validar a presença de um arquivo em um diretório, também analisa se o dado arquivo está devidamente atualizado seguindo critérios fornecidos pelo usuário, permitindo assim, verificar se dado arquivo neste diretório alvo foi modificado pela última vez no mês atual. Ainda neste bloco, a função `copia_arquivo()`, realiza a cópia de arquivos baseada em uma origem e um destino fornecidos pelo usuário.
 
