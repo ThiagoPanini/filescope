@@ -3,35 +3,71 @@
 </h1>
 
 <div align="center">
-  <strong>:open_file_folder: Gerenciamento de arquivos em diretórios locais :open_file_folder:</strong>
+  <strong>:open_file_folder: Managing files and local disk usage in an Operational System :open_file_folder:</strong>
 </div>
 <br/>
 
 <div align="center">  
   
   ![Release](https://img.shields.io/badge/release-ok-brightgreen)
-  [![PyPI](https://img.shields.io/pypi/v/filescope?color=blueviolet)](https://pypi.org/project/filescope/)
+  [![PyPI](https://img.shields.io/pypi/v/xplotter?color=blueviolet)](https://pypi.org/project/filescope/)
   ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/filescope?color=green)
   ![PyPI - Status](https://img.shields.io/pypi/status/filescope)
 
 </div>
+
+<div align="center">  
+  
+  ![Downloads](https://img.shields.io/pypi/dm/filescope?color=darkblue)
+  ![Downloads](https://img.shields.io/pypi/dw/filescope?color=blue)
+  ![Downloads](https://img.shields.io/pypi/dd/filescope?color=lightblue)
+
+</div>
+
 <br/>
 
 Biblioteca Python criada para facilitar o gerenciamento e a análise de arquivos armazenados em diretórios locais do sistema operacional. Com o pacote `filescope`, é possível validar a presença de arquivos em diretórios específicos, realizar cópias entre arquivos de diferentes diretórios ou até mesmo gerar um report analítico e visual completo contendo informações relevantes a respeito dos arquivos presentes em um diretório específico, como tamanho, dias desde a criação, dias sem utilização, modificação ou acesso e um score específico (denominado *filescope_score*) que penaliza arquivos de alto tamanho e que estão há muito tempo sem acesso.
 
+
 ## Table of content
 
+- [About filescope](#about-filescope)
+  - [Package structure](#package-structure)
 - [Features](#features)
-    - [Manuseio de arquivos](#manuseio-de-arquivos)
-    - [Gerenciamento de Diretórios](#gerenciamento-de-diretórios)
-- [Instalação](#instalação)
-- [Utilização](#utilização)
+  - [Filescope Score](#filescope-score)
+- [Installing the package](#installing-the-package)
+- [Examples](#examples)
+  - [Manager module](#manager-module)
+- [Contribution](#contribution)
+- [Social Media](#social-media)
+
+___
+
+## About filescope
+
+Have you ever questioned yourself about how good it could be to have some kind of engine that helps user to manage files and disk usage in a shared directory of a company? Maybe it's the case that you work in a team and you all use the same directory to share files and projects but, as times passes by, you all start to face problems on disk space available or the storage of huge files made from people that are not on the team anymore. How can you handle it without searching files one by one in a directory with thousands of them?
+
+Here is the answear: the `filescope` python package. The example above is just one of the most motivational for building this tool, but I want you to look at this package and see an instrument that makes the management of files in an operational system easier, whether you are in a company or in our personal environment. The big idea behind this new implementation is to improve analytics on local directories for helping users to make good decisions about which files are no longer being used and that are taking up a large amount of disk space.
+
+At the end of the day, the `filescope` python package provides a *Filescope Score* that are computed using some attributes of files in a disk and can be used for guidance on file mangement decisions. The score will be detailed along this documentation.
+
+___
+
+### Package structure
+
+By now, the `filescope` package has one module called `manager` that includes all the functions for applying analytics on local folders or even making some basic actions like copying files from a source to a destiny. There is also good effort being made for adding up visual analysis using fetures extracted from local folders.
+
+| Module      | Description                                                                 | Functions/Methods  | Lines of Code (approx) |
+| :---------: | :-------------------------------------------------------------------------: | :----------------: | :--------------------: |
+| `manager`   | Functions for managing files and extracting features from local directories |         15         |         ~850           |
+
+It is also good to say that the filescope package uses the `logging` package for log the actions inside funtions calls. The logger configuration is built inside the manager module and can be acessible and changed by modifying the python file associated.
 
 ___
 
 ## Features
 
-Em sua versão atual, o pacote `filescope` conta com o módulo `manager`, sendo este responsável por alocar as principais funcionalidades relacionadas ao gerenciamento e a análise de arquivos em diretórios. Entre o detalhamento aqui proposto, as ferramentas deste pacote serão divididas em dois principais grupos: manuseio de arquivos e gerenciamento de diretórios.
+After a general overview of the package, it's time to go a little deeper on its functionalities. So, this section will allocate some of the main package features divided into two groups: file handling and directory management.
 
 ### Manuseio de Arquivos
 
